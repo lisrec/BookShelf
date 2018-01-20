@@ -1,0 +1,4 @@
+<div *ngIf="auth.user | async as user">
+	<h3>Cześć, {{user.displayName}}</h3>
+	<img [src]="user.photoURL">
+</div>

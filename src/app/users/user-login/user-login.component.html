@@ -1,0 +1,146 @@
+<!-- LOGIN PANEL -->
+
+<ng-container *ngIf="loading">
+	<app-loading></app-loading>
+</ng-container>
+
+<div *ngIf="!loading" class="signin-panel">
+	<mat-card>
+		<mat-card-content>
+			<ng-container *ngIf="userAuthorized">
+				<ng-container *ngTemplateOutlet="alreadyAuth"></ng-container>
+			</ng-container>
+
+			<ng-container *ngIf="!userAuthorized">
+				<ng-container *ngTemplateOutlet="showLoginForm ? loginFormLoginEmail : loginFormChooseType"></ng-container>
+			</ng-container>
+		</mat-card-content>
+	</mat-card>
+</div>
+
+
+
+<!-- Template - choose login method -->
+<ng-template #loginFormChooseType>
+	
+	<mat-toolbar>
+		<span>Metoda logowania</span>
+	</mat-toolbar>
+	
+	<div class="card-real-content">
+		<div class="buttons-container">
+			<div class="button-row">
+				<span class="fill-space"></span>
+				<button mat-raised-button class="chooseMethod-button" color="" (click)="onLoginWithEmail()">
+					<span class="button-label">
+						<i class="fa fa-2x fa-envelope"></i>
+						<span class="button-label-text">E-mail / hasło</span>
+					</span>
+				</button>
+				<span class="fill-space"></span>
+			</div>
+
+			<div class="button-row">
+				<span class="fill-space"></span>
+				<button mat-raised-button class="chooseMethod-button" color="warn" (click)="onConnectGoogle()">
+					<span class="button-label">
+						<i class="fa fa-2x fa-google-plus-square"></i>
+						<span class="button-label-text">Połącz z Google</span>
+					</span>
+				</button>
+				<span class="fill-space"></span>
+			</div>
+
+			<div class="button-row">
+				<span class="fill-space"></span>
+				<button mat-raised-button class="chooseMethod-button" color="primary" (click)="onConnectFacebook()">
+					<span class="button-label">
+						<i class="fa fa-2x fa-facebook-square"></i>
+						<span class="button-label-text">Połącz z Facebook</span>
+					</span>
+				</button>
+				<span class="fill-space"></span>
+			</div>
+		</div>
+
+		<ng-container *ngTemplateOutlet="loginFormFooter"></ng-container>
+	</div>
+
+</ng-template>
+
+
+<!-- Template - login with email -->
+<ng-template #loginFormLoginEmail>
+
+	<mat-toolbar>
+		<button mat-icon-button (click)="onBack()"> 
+			<mat-icon>keyboard_arrow_left</mat-icon>
+		</button> &nbsp;
+		<span>Logowanie</span>
+	</mat-toolbar>
+
+	<div class="card-real-content">
+		<div class="form-container">
+			<mat-form-field>
+				<input matInput placeholder="E-mail" [formControl]="form.email" required>
+				<mat-error *ngIf="form.email.invalid">
+					Podaj prawidłowy email
+				</mat-error>
+			</mat-form-field>
+	
+			<mat-form-field>
+				<input matInput type="password" placeholder="Hasło" [formControl]="form.password" required>
+				<mat-error *ngIf="form.password.invalid">
+					Podaj poprawne hasło
+				</mat-error>
+			</mat-form-field>
+		</div>
+	
+		<div class="buttons-container">
+			<div class="button-row">
+				<span class="fill-space"></span>
+				<button mat-raised-button class="login-button" color="primary" (click)="onSignIn()">Zaloguj</button>
+			</div>
+		</div>
+
+		<ng-container *ngTemplateOutlet="loginFormFooter"></ng-container>
+	</div>
+
+</ng-template>
+
+<!-- Template - footer register/forgot pass -->
+<ng-template #loginFormFooter>
+	
+	<br />
+	<mat-divider></mat-divider>
+
+	<div class="footer-buttons">
+		<button mat-button class="login-button" (click)="onRegister()">Rejestracja</button>
+		<button mat-button class="login-button" (click)="onForget()">Odzyskaj hasło</button>
+	</div>
+</ng-template>
+
+
+<!-- Template - already login -->
+<ng-template #alreadyAuth>
+	
+	<mat-toolbar>
+		<span>Jesteś zalogowany</span>
+	</mat-toolbar>
+
+	<div class="card-real-content">
+		<div class="buttons-container">
+			<div class="button-row">
+				<span class="fill-space"></span>
+				<button mat-raised-button class="chooseMethod-button" color="" (click)="onSignOut()">
+					<span class="button-label">
+						<i class="fa fa-2x fa-sign-out"></i>
+						<span class="button-label-text">Wyloguj</span>
+					</span>
+				</button>
+				<span class="fill-space"></span>
+			</div>
+		</div>
+	</div>
+	<br/>
+</ng-template>

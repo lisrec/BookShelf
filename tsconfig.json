@@ -14,6 +14,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+
+    "baseUrl": "src",
+    "paths": {
+      "@shelf/*": ["app/*"],
+      "@shelf-core/*": ["app/core/*"],
+      "@shelf-users/*": ["app/users/*"],
+      "@shelf-shared/*": ["app/shared/*"]
+    }
   }
 }
