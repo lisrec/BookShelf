@@ -9,7 +9,8 @@ import { UserRegisterComponent } from '@shelf/users/user-register/user-register.
 const routes: Routes = [
 	{ 'path': 'login', component: UserLoginComponent },
 	{ 'path': 'register', component: UserRegisterComponent },
-	{ 'path': 'profile', component: UserProfileComponent, canActivate: [AuthGuard] }
+	{ 'path': 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+	{ 'path': '**', redirectTo: 'profile' }
 ];
 
 @NgModule({
