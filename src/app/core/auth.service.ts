@@ -35,6 +35,7 @@ export class AuthService {
 		const data: User = {
 			uid: user.uid,
 			email: user.email,
+			emailVerified: user.emailVerified,
 			displayName: user.displayName,
 			photoURL: user.photoURL
 		}
@@ -46,6 +47,13 @@ export class AuthService {
 		return this.afAuth.auth.signInWithPopup(provider)
 			.then(cred => {
 				this.updateUserData(cred.user)
+				this.router.navigate(['/'])
+			})
+			.catch(e => {
+				console.log(e.code)
+				if (e.code == "auth/account-exists-with-different-credential") {
+					alert("Konto z takim mailem już istnieje!\nSkorzystaj z innej metody.")
+				}
 			})
 	}
 
@@ -53,16 +61,67 @@ export class AuthService {
 		return !!this.user
 	}
 
+	registerUser(username: string, email: string, password: string) {
+		return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+			.then(cred => {
+
+				this.afAuth.auth.currentUser.sendEmailVerification()
+					.catch(e => console.log(e))
+
+				this.afAuth.auth.currentUser.updateProfile({
+					displayName: username,
+					photoURL: null
+				}).catch(e => console.log(e))
+
+				const userData: User = {
+					uid: cred.uid,
+					email: cred.email,
+					emailVerified: cred.emailVerified,
+					displayName: username,
+					photoURL: null
+				}
+
+				this.updateUserData(userData)
+				this.router.navigate(['/'])
+			})
+			.catch(e => console.log(e))
+	}
+
+	emailLogin(email: string, password: string) {
+		return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+			.then(cred => {
+				const userData: User = {
+					uid: cred.uid,
+					email: cred.email,
+					emailVerified: cred.emailVerified,
+					displayName: cred.displayName,
+					photoURL: null
+				}
+
+				this.updateUserData(userData)
+				this.router.navigate(['/'])
+			})
+			.catch(e => {
+				console.log(e)
+			})
+	}
+
 	googleLogin() {
 		const provider = new firebase.auth.GoogleAuthProvider()
+		return this.oAuthLogin(provider)
+	}
+
+	facebookLogin() {
+		const provider = new firebase.auth.FacebookAuthProvider()
 		return this.oAuthLogin(provider)
 	}
 
 	signOut() {
 		this.afAuth.auth.signOut()
 			.then(() => {
-				this.router.navigate(['/'])
+				this.router.navigate(['/login'])
 			})
+			.catch(e => console.log(e.code))
 	}
 
 }

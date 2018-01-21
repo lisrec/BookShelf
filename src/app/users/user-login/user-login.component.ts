@@ -43,7 +43,7 @@ export class UserLoginComponent implements OnInit {
 	}
 
 	onConnectFacebook() {
-		this.auth.googleLogin()
+		this.auth.facebookLogin()
 	}
 
 	onLoginWithEmail() {
@@ -63,7 +63,9 @@ export class UserLoginComponent implements OnInit {
 	}
 
 	onSignIn() {
-		
+		const f = this.form
+		if (f.email.valid && f.password.valid)
+			this.auth.emailLogin(f.email.value, f.password.value)
 	}
 
 	onSignOut() {

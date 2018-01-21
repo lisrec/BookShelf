@@ -18,7 +18,7 @@ export class UserRegisterComponent implements OnInit {
 	form = {
 		username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]),
 		email: new FormControl('', [Validators.required, Validators.email]),
-		password: new FormControl('', [Validators.required, Validators.minLength(3)])
+		password: new FormControl('', [Validators.required, Validators.minLength(6)])
 	}
 
 	loading: boolean = true;
@@ -37,7 +37,10 @@ export class UserRegisterComponent implements OnInit {
 	}
 
 	onRegister() {
+		const f = this.form
 		
+		if (f.email.valid && f.password.valid && f.username.valid)
+			this.auth.registerUser(this.form.username.value, this.form.email.value, this.form.password.value)
 	}
 
 }
