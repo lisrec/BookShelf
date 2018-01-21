@@ -14,7 +14,9 @@ import { LoadingComponent } from './loading/loading.component';
   ],
   exports: [
     NavtopComponent,
-    LoadingComponent
+    LoadingComponent,
+    AppMaterialModule,
+    AppRoutingModule
   ],
   declarations: [NavtopComponent, LoadingComponent]
 })
