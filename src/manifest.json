@@ -1,0 +1,9 @@
+{
+  "name": "Bookshelf",
+  "short_name": "Bookshelf",
+  "theme_color": "#004e8c",
+  "background_color": "#d9f6ff",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}
