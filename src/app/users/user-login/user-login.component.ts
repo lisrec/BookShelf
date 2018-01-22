@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from "@shelf-core/auth.service";
+import { AuthService } from '@shelf-core/auth.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -23,7 +23,7 @@ export class UserLoginComponent implements OnInit {
 	loading: boolean = true;
 	showLoginForm: boolean = false;
 	userAuthorized: boolean = false;
-	
+
 	constructor(private auth: AuthService) {}
 
 	ngOnInit() {
@@ -64,8 +64,9 @@ export class UserLoginComponent implements OnInit {
 
 	onSignIn() {
 		const f = this.form
-		if (f.email.valid && f.password.valid)
+		if (f.email.valid && f.password.valid) {
 			this.auth.emailLogin(f.email.value, f.password.value)
+		}
 	}
 
 	onSignOut() {

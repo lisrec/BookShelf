@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { AuthService } from "@shelf-core/auth.service";
+import { AuthService } from '@shelf-core/auth.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/take';
 	styleUrls: ['./user-register.component.scss']
 })
 export class UserRegisterComponent implements OnInit {
-	
+
 	form = {
 		username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]),
 		email: new FormControl('', [Validators.required, Validators.email]),
@@ -22,7 +22,7 @@ export class UserRegisterComponent implements OnInit {
 	}
 
 	loading: boolean = true;
-	
+
 	constructor(private auth: AuthService) {}
 
 	ngOnInit() {
@@ -38,9 +38,10 @@ export class UserRegisterComponent implements OnInit {
 
 	onRegister() {
 		const f = this.form
-		
-		if (f.email.valid && f.password.valid && f.username.valid)
+
+		if (f.email.valid && f.password.valid && f.username.valid) {
 			this.auth.registerUser(this.form.username.value, this.form.email.value, this.form.password.value)
+		}
 	}
 
 }

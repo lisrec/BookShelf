@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { RouterLink } from "@angular/router"
-import { AuthService } from "@shelf-core/auth.service"
+import { RouterLink } from '@angular/router'
+import { AuthService } from '@shelf-core/auth.service'
 
 @Component({
 	selector: 'app-navtop',
@@ -9,7 +9,7 @@ import { AuthService } from "@shelf-core/auth.service"
 })
 export class NavtopComponent implements OnInit {
 
-	title: string = "Bookshelf"
+	title: string = 'Bookshelf'
 	showNavbar: boolean = false
 
 	constructor(private auth: AuthService) { }

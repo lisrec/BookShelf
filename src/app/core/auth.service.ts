@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
-import * as firebase from "firebase/app";
-import { AngularFireAuth } from "angularfire2/auth";
-import { AngularFirestore, AngularFirestoreDocument } from "angularfire2/firestore";
+import * as firebase from 'firebase/app';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
 
-import { User } from "@shelf-users/user";
+import { User } from '@shelf-users/user';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +18,7 @@ export class AuthService {
 	constructor(private afAuth: AngularFireAuth,
 				private afs: AngularFirestore,
 				private router: Router) {
-		
+
 		this.user = this.afAuth.authState
 			.switchMap(user => {
 				if (user) {
@@ -51,8 +51,8 @@ export class AuthService {
 			})
 			.catch(e => {
 				console.log(e.code)
-				if (e.code == "auth/account-exists-with-different-credential") {
-					alert("Konto z takim mailem już istnieje!\nSkorzystaj z innej metody.")
+				if (e.code === 'auth/account-exists-with-different-credential') {
+					alert('Konto z takim mailem już istnieje!\nSkorzystaj z innej metody.')
 				}
 			})
 	}
