@@ -7,10 +7,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule
-  ],
-  declarations: [UserLoginComponent, UserProfileComponent, UserRegisterComponent]
+	imports: [
+		CommonModule,
+		SharedModule
+	],
+	declarations: [UserLoginComponent, UserProfileComponent, UserRegisterComponent]
 })
 export class UsersModule { }
