@@ -26,8 +26,8 @@ import { UsersModule } from '@shelf-users/users.module';
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		CoreModule,
-		UsersModule,
 		SharedModule,
+		UsersModule,
 		ServiceWorkerModule.register('/ngsw-worker.js', {
 			enabled: environment.production
 		})

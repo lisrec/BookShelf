@@ -4,8 +4,12 @@
 </mat-menu>
 
 <mat-toolbar *ngIf="showNavbar" color="primary" class="nav-top header-shadow">
-	<span>{{title}}</span>
+	<span class="navBar-title">{{title}}</span>
 	
+	<button mat-button routerLink="/books">
+		Książki
+	</button>
+
 	<span class="fill-remaining-space"></span>
 
 	<button mat-button [matMenuTriggerFor]="appMenu">

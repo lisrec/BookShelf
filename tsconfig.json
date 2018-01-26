@@ -20,8 +20,9 @@
     "paths": {
       "@shelf/*": ["app/*"],
       "@shelf-core/*": ["app/core/*"],
+      "@shelf-shared/*": ["app/shared/*"],
       "@shelf-users/*": ["app/users/*"],
-      "@shelf-shared/*": ["app/shared/*"]
+      "@shelf-books/*": ["app/books/*"]
     }
   }
 }
