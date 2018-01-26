@@ -1,7 +1,9 @@
-<mat-card *ngIf="auth.user | async as user" class="user-profile-card">
-	<mat-card-header>
-		<mat-card-title>{{user.displayName}}</mat-card-title>
-		<mat-card-subtitle>{{user.email}}</mat-card-subtitle>
-	</mat-card-header>
-	<img class="user-profile-avatar" mat-card-image [src]="user.photoURL" alt="">
-</mat-card>
+<div class="content-wrapper">
+	<mat-card *ngIf="auth.user | async as user" class="user-profile-card">
+		<mat-card-header>
+			<mat-card-title>{{user.displayName}}</mat-card-title>
+			<mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+		</mat-card-header>
+		<img class="user-profile-avatar" mat-card-image [src]="user.photoURL" alt="">
+	</mat-card>
+</div>

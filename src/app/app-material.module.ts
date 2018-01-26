@@ -9,7 +9,9 @@ import {
 	MatButtonModule,
 	MatFormFieldModule,
 	MatIconModule,
-	MatDividerModule
+	MatDividerModule,
+	MatSnackBarModule,
+	MatMenuModule
 } from '@angular/material';
 
 
@@ -24,7 +26,9 @@ import {
 		MatButtonModule,
 		MatFormFieldModule,
 		MatIconModule,
-		MatDividerModule
+		MatDividerModule,
+		MatSnackBarModule,
+		MatMenuModule
 	]
 })
 export class AppMaterialModule {}

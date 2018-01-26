@@ -5,8 +5,13 @@ html, body {
 	margin: 0;
 }
 
-.content-wrapper {
+.router-wrapper {
 	margin-top: 70px;
+}
+
+.content-wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
 }
 
 .fill-space,

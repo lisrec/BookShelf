@@ -1,10 +1,18 @@
+<mat-menu y-position="below" #appMenu="matMenu">
+	<button mat-menu-item routerLink="profile"> Mój profil </button>
+	<button mat-menu-item (click)="onLogout()"> Wyloguj </button>
+</mat-menu>
+
 <mat-toolbar *ngIf="showNavbar" color="primary" class="nav-top header-shadow">
 	<span>{{title}}</span>
 	
 	<span class="fill-remaining-space"></span>
 
-	<span>
-		<button mat-button routerLink="profile">Profile</button>
-		<button mat-button routerLink="login">Login</button>
-	</span>
+	<button mat-button [matMenuTriggerFor]="appMenu">
+		<span>
+			<i class="fa fa-user"></i>
+			{{username}}
+		</span>
+	</button>
 </mat-toolbar>
+

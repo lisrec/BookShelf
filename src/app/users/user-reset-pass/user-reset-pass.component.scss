@@ -1,4 +1,4 @@
-.register-panel {
+.resetPass-panel {
 	margin: 0 auto;
 	width: 400px;
 
@@ -24,13 +24,7 @@
 	.buttons-container {
 		display: flex;
 		flex-direction: column;
-
-		.chooseMethod-button {
-			height: 50px;
-			width: 300px;
-			line-height: 50px;
-		}
-
+		
 		.button-row {
 			display: flex;
 			flex-direction: row;

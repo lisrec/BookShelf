@@ -10,12 +10,14 @@ import { AuthService } from '@shelf-core/auth.service'
 export class NavtopComponent implements OnInit {
 
 	title: string = 'Bookshelf'
+	username: string
 	showNavbar: boolean = false
 
 	constructor(private auth: AuthService) { }
 
 	ngOnInit() {
 		this.auth.user
+			.do(user => this.username = (user && user.displayName) ? user.displayName : '')
 			.map(user => !!user)
 			.subscribe(isLogged => this.showNavbar = isLogged)
 	}

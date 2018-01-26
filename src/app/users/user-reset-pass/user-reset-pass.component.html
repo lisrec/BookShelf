@@ -1,0 +1,39 @@
+<!-- RESET PASS PANEL -->
+
+<ng-container *ngIf="loading">
+	<app-loading></app-loading>
+</ng-container>
+
+
+<div *ngIf="!loading" class="resetPass-panel">
+	<mat-card>
+		<mat-card-content>
+				
+			<mat-toolbar>
+				<button mat-icon-button routerLink="/login"> 
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button> &nbsp;
+				<span>Resetuj hasło</span>
+			</mat-toolbar>
+		
+			<div class="card-real-content">
+				<div class="form-container">
+					<mat-form-field>
+						<input matInput placeholder="Podaj E-mail" [formControl]="form.email" required>
+						<mat-error *ngIf="form.email.invalid">
+							Nie prawidłowy email.
+						</mat-error>
+					</mat-form-field>
+				</div>
+			
+				<div class="buttons-container">
+					<div class="button-row">
+						<span class="fill-space"></span>
+						<button mat-raised-button class="resetPass-button" color="primary" (click)="onResetPass()">Resetuj hasło</button>
+					</div>
+				</div>
+			</div>
+
+		</mat-card-content>
+	</mat-card>
+</div>

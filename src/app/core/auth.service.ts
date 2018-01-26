@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -17,7 +18,10 @@ export class AuthService {
 
 	constructor(private afAuth: AngularFireAuth,
 				private afs: AngularFirestore,
-				private router: Router) {
+				private router: Router,
+				private snackBar: MatSnackBar) {
+
+		this.afAuth.auth.useDeviceLanguage()
 
 		this.user = this.afAuth.authState
 			.switchMap(user => {
@@ -87,6 +91,10 @@ export class AuthService {
 			.catch(e => console.log(e))
 	}
 
+	resetPassword(email: string) {
+		return this.afAuth.auth.sendPasswordResetEmail(email)
+	}
+
 	emailLogin(email: string, password: string) {
 		return this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			.then(cred => {
@@ -103,6 +111,11 @@ export class AuthService {
 			})
 			.catch(e => {
 				console.log(e)
+				switch (e.code) {
+					case 'auth/wrong-password':
+						this.snackBar.open('Nie prawidłowe dane logowania.', '', { duration: 2000 })
+						break
+				}
 			})
 	}
 

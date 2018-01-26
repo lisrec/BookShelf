@@ -54,14 +54,6 @@ export class UserLoginComponent implements OnInit {
 		this.showLoginForm = false
 	}
 
-	onRegister() {
-
-	}
-
-	onForget() {
-
-	}
-
 	onSignIn() {
 		const f = this.form
 		if (f.email.valid && f.password.valid) {

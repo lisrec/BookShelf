@@ -32,10 +32,6 @@ export class UserRegisterComponent implements OnInit {
 			})
 	}
 
-	onBack() {
-
-	}
-
 	onRegister() {
 		const f = this.form
 
